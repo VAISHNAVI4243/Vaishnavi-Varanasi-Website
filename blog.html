@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Vaishnavi Varanasi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Tabs */
+    .tab-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      gap: 20px;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+
+    .tab {
+      background: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #555;
+    }
+
+    .tab.active {
+      background-color: #ffcf9d;
+      color: #333;
+    }
+
+    /* Blog grid layout */
+    .tab-content {
+      display: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto 80px auto;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    .blog-card {
+      width: 300px;
+      border-radius: 16px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .blog-card-content {
+      padding: 18px;
+    }
+
+    .blog-card-content a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      transition: color 0.3s;
+    }
+
+    .blog-card-content a:hover {
+      color: #ff9f43;
+    }
+
+    .blog-card-content p {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      /* Hamburger menu */
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* Navbar links toggle */
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      /* Hide social links on mobile */
+      .social-links {
+        display: none;
+      }
+
+      /* Tab content adjustments */
+      .tab-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .blog-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR with Hamburger -->
+  <nav class="navbar">
+    <div class="logo">VVrites</div>
+
+    <!-- Hamburger button -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Milestones</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+
+    <!-- Social links (desktop only) -->
+    <div class="social-links">
+      <a href="https://github.com/VVa154" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/vaishnavi-varanasi-838104129/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </nav>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="tab-container">
+      <div class="tabs">
+        <div class="tab" onclick="openTab('personal')">Personal</div>
+        <div class="tab" onclick="openTab('professional')">Professional</div>
+      </div>
+
+      <div id="personal" class="tab-content">
+        <h2>Blog Posts Coming Soon</h2>
+      </div>
+
+      <div id="professional" class="tab-content">
+        <h2>Blog Posts Coming Soon</h2>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Tabs functionality
+    function openTab(tabName) {
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active');
+      document.getElementById(tabName).classList.add('active');
+
+      sessionStorage.setItem('activeBlogTab', tabName);
+    }
+
+    // Restore tab on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const activeTab = sessionStorage.getItem('activeBlogTab') || 'personal';
+      openTab(activeTab);
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
