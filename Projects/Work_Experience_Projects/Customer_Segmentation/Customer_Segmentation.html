@@ -186,11 +186,37 @@
         <li>Volume Comparison – 10% growth</li>
     </ul>
 
-    <ol>
-        <li><b>Quartile Scores:</b> 4,5,3,4,4,3</li>
-        <li><b>Final Score:</b> 4.1</li>
-        <li><b>Category:</b> B</li>
-    </ol>
+     <h3>Step 1: Assign Intra-Quartile Scores</h3>
+    <p>Recency – 4<br>
+       Frequency – 5<br>
+       Length – 3<br>
+       Monetary – 4<br>
+       Financial Discipline – 4<br>
+       Volume Comparison – 3</p>
+
+    <h3>Step 2: Apply Weightages and Compute Final Score</h3>
+    <p>
+        Recency: 4 × 10% = 0.4<br>
+        Frequency: 5 × 30% = 1.5<br>
+        Length: 3 × 10% = 0.3<br>
+        Monetary: 4 × 25% = 1.0<br>
+        Financial Discipline: 4 × 15% = 0.6<br>
+        Volume Comparison: 3 × 10% = 0.3<br>
+        <b>Final Score = 0.4 + 1.5 + 0.3 + 1.0 + 0.6 + 0.3 = 4.1</b>
+    </p>
+
+    <h3>Step 3: Categorize</h3>
+    <p>
+        Category A – Highest quartile<br>
+        Category B – Second quartile<br>
+        Category C – Third quartile<br>
+        Category D – Lowest quartile (highest risk of churn)
+    </p>
+    <p>
+        In this example, a score of <b>4.1</b> would place the customer in <b>Category B</b>, indicating a moderate risk of churn.
+    </p>
+
+   
 
     <h2><b>Output</b></h2>
     <p>Results updated quarterly in Power BI with transition matrix.</p>
