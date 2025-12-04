@@ -1,84 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LifeLens AI - Vaishnavi Varanasi</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    /* Mobile hamburger & content adjustments */
-    @media (max-width: 768px) {
-      body {
-        padding: 0 15px; /* ensures text doesn't touch screen edges */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLens AI - Vaishnavi Varanasi</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
         box-sizing: border-box;
-      }
+    }
 
-      .project-detail {
-        padding: 0 10px; /* optional extra padding inside section */
-      }
+    .project-detail {
+        padding: 0 10px;
+    }
 
-      .hamburger {
+    .hamburger {
         display: flex;
         flex-direction: column;
         cursor: pointer;
         gap: 5px;
         margin-left: auto;
-      }
+    }
 
-      .hamburger span {
-        width: 20px;   /* smaller width for mobile */
+    .hamburger span {
+        width: 20px;
         height: 3px;
-        background-color: #fff; /* white hamburger */
+        background-color: #fff;
         transition: all 0.3s ease;
-      }
+    }
 
-      .hamburger.active span:nth-child(1) {
+    .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(4px, 4px);
-      }
-      .hamburger.active span:nth-child(2) {
+    }
+    .hamburger.active span:nth-child(2) {
         opacity: 0;
-      }
-      .hamburger.active span:nth-child(3) {
+    }
+    .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(4px, -4px);
-      }
+    }
 
-      .nav-links {
+    .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
         margin-top: 10px;
         gap: 10px;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      h1, h2, p, ul, li, a {
-        word-wrap: break-word; /* prevent overflow */
-      }
     }
-  </style>
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 <body>
-  <nav class="navbar">
+
+<nav class="navbar">
     <div class="logo">LifeLens AI</div>
 
     <!-- Hamburger for mobile -->
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
     <ul class="nav-links" id="nav-links">
-      <li><a href="../../../projects.html" class="active">Projects</a></li>
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <section class="project-detail">
-    <h1>LifeLens AI</h1>
+<!-- WRAPPER FOR TEXT (NEW, ONLY CHANGE) -->
+<div class="content-wrapper">
+
+<section class="project-detail">
+   
 
     <h2>Introduction</h2>
     <p>
@@ -108,26 +136,24 @@
 
     <h2>Technical Details</h2>
     <ul>
-      <li><strong>Backend-</strong>Ollama, ChromaDB, SQLite<strong>Frontend-</strong>Streamlit</li>
-      <li><strong>Interaction Flow-</strong>
+      <li><strong>Backend:</strong> Ollama, ChromaDB, SQLite | <strong>Frontend:</strong> Streamlit</li>
+      <li><strong>Interaction Flow:</strong>
         <ul>
-          <li>User inputs(text/voice)</li>
-          <li>Voice-to-text conversion(via Google Speech-to-Text)</li>
-          <li>Memory retrieval(ChromaDB+SQLite)</li>
+          <li>User inputs (text/voice)</li>
+          <li>Voice-to-text conversion (via Google Speech-to-Text)</li>
+          <li>Memory retrieval (ChromaDB+SQLite)</li>
           <li>LLM-generated empathetic response</li>
-          <li>UI displays reply+ stores conversation</li>
+          <li>UI displays reply + stores conversation</li>
         </ul>
       </li>
-      <li><strong>SQLite-</strong> Structured database for storing user chats, emotional states, goals, and session history</li>
-      <li><strong>ChromaDB-</strong>Vector database for storing and retrieving semantically meaningful conversation segments 
-        (e.g., therapy Q&A examples)</li>
-      <li><strong>Voice Handling-</strong>Google Speech-to-Text API: Converts uploaded voice recordings into text. 
-        Originally attempted Bark (LLM for voice generation), but switched due to high RAM requirements (~20–25 GB)</li>
+      <li><strong>SQLite:</strong> Structured database for storing user chats, emotional states, goals, and session history</li>
+      <li><strong>ChromaDB:</strong> Vector database for storing and retrieving semantically meaningful conversation segments (e.g., therapy Q&A examples)</li>
+      <li><strong>Voice Handling:</strong> Google Speech-to-Text API: Converts uploaded voice recordings into text. Bark LLM for voice generation was avoided due to high RAM requirements (~20–25 GB)</li>
     </ul>
 
     <h2>Challenges</h2>
     <ul>
-      <li>Bark LLM for voice too memory- heavy</li>
+      <li>Bark LLM for voice too memory-heavy</li>
       <li>Token limit optimization</li>
       <li>Ethical responses for serious issues</li>
     </ul>
@@ -143,21 +169,24 @@
     </p>
 
     <a href="../../../projects.html" class="back-link">← Back to Projects</a>
-  </section>
+</section>
 
-  <footer class="footer">
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
     <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
-  </footer>
+</footer>
 
-  <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-  </script>
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+</script>
+
 </body>
 </html>

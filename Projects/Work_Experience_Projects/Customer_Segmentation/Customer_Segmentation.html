@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Segmentation</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Customer Segmentation</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<!-- WRAPPER FOR TEXT (NEW, ONLY CHANGE) -->
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="CS.jpg" alt="Customer Segmentation" class="project-image">
+
+    <h2><b>Back Story</b></h2>
+    <p>Our CIO took our earlier suggestions and decided to expand my previous project, the “Churn Analysis,” into a full-fledged Customer Segmentation initiative. We started with the standard industry approach, the RFM segmentation technique.</p>
+
+    <ul>
+        <li><b>R</b> stands for Recency, which is the latest date when the customer purchased from us</li>
+        <li><b>F</b> stands for Frequency, which is how many times they purchased in that quarter</li>
+        <li><b>M</b> stands for Monetary, which is how much value they purchased from us</li>
+    </ul>
+
+    <p>We built this version quickly and presented it to the Sales Business team. But they immediately told us that the ground reality was different and segmentation needed to reflect more business-specific factors.</p>
+
+    <p>So we came back, ran multiple discussions with the business teams, and added a few more important parameters like:</p>
+
+    <ul>
+        <li>Length of Relationship — how long the customer has been associated with us</li>
+        <li>Financial Discipline — how consistent they are with their payment terms</li>
+        <li>Volume Comparison — whether their purchase volumes have grown compared to the previous quarter</li>
+    </ul>
+
+    <p>After reworking the model with these additional insights, we presented it again and this time the business approved it.</p>
+
+    <p>The initial project inception and first RFM-only iteration took one week, but all remaining iterations, validations, and final rollout collectively took around six months.</p>
+
+    <h2><b>Learnings from the Project</b></h2>
+    <ul>
+        <li>Even the smallest projects can take a long time when they are cross-functional</li>
+        <li>We had to pull data from multiple sales systems. Data extraction, SQL queries, API pulls, all of it together was time-consuming</li>
+        <li>Business was used to Excel reports. We created a dashboard, integrated categories into SAP, and explained to teams to ensure adoption</li>
+        <li>Technically simple, but change management was the key challenge</li>
+    </ul>
+
+    <h2><b>Objective of the Project</b></h2>
+    <p>The objective was to segment existing customers into clear groups that could reveal behavior patterns and help reduce potential churn.</p>
+
+    <h2><b>Tools Used</b></h2>
+    <p>SAP data extraction, API based secondary data, BI warehouse for data consolidation, SQL for data extraction, Power BI for visualisation</p>
+
+    <h2><b>Dataset and Data Description</b></h2>
+    <ul>
+        <li>Customer ID – Unique identifier for each customer</li>
+        <li>Date of Registration – The date the customer first registered</li>
+        <li>Purchase Dates – All dates on which the customer made purchases</li>
+        <li>Product ID – Identifier for the product purchased</li>
+        <li>Purchase Value – The value of each purchase</li>
+        <li>Payment Timeliness – Whether the customer paid fully & on time</li>
+        <li>Previous Quarter Purchase Value – Total purchased previously</li>
+        <li>Current Quarter Purchase Value – Total purchased this quarter</li>
+    </ul>
+
+    <h2><b>Approach</b></h2>
+    <ol>
+        <li><b>Calculate Derived Columns</b>: Recency, Frequency, Monetary, Length of Relationship, Financial Discipline, Value/Volume Comparison.</li>
+        <li><b>Assign Quartile Scores</b>: Values divided into 5 quartiles (5–1).</li>
+        <li><b>Apply Weightages</b>: Multiply scores & sum.</li>
+        <li><b>Categorize</b>: Final score grouped into A–D.</li>
+    </ol>
+
+    <h2><b>Example</b></h2>
+    <p>Sample Customer:</p>
+
+    <ul>
+        <li>Recency – Purchased 10 days ago</li>
+        <li>Frequency – 4 purchases</li>
+        <li>Length – 3 years</li>
+        <li>Monetary – ₹5000</li>
+        <li>Financial Discipline – 80% on-time payments</li>
+        <li>Volume Comparison – 10% growth</li>
+    </ul>
+
+    <ol>
+        <li><b>Quartile Scores:</b> 4,5,3,4,4,3</li>
+        <li><b>Final Score:</b> 4.1</li>
+        <li><b>Category:</b> B</li>
+    </ol>
+
+    <h2><b>Output</b></h2>
+    <p>Results updated quarterly in Power BI with transition matrix.</p>
+
+    <h2><b>Business Impact</b></h2>
+    <p>Enabled targeted retention programs and early churn detection.</p>
+
+    <a href="../../../projects.html" class="back-link"> ← Back to Customer Segmentation </a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
