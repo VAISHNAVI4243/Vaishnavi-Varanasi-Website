@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesforce Effectiveness</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Salesforce Effectiveness</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<!-- WRAPPER FOR TEXT (NEW, ONLY CHANGE) -->
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="SF.jpg" alt="Salesforce Effectiveness" class="project-image">
+
+    <h2><b>Back Story</b></h2>
+    <p>Sales numbers in the company were strong, which initially made it seem like most of the sales team was performing really well. But when we actually dug into the KPIs, we noticed something interesting. A handful of salespeople were outperforming their targets by a huge margin, while a few others were consistently falling short.</p>
+
+    <p>When we reached out to the ones who were struggling, we kept hearing the same reasons again and again. Their routes were not structured well. In bigger cities they were losing time in traffic, and in smaller cities they were facing reachability issues. In some cases the store timings did not match the time they were reaching the store, so they were either waiting too long or missing the window entirely.</p>
+
+    <p>Considering all these challenges, it became clear that their routes needed to be optimised. The idea was to group stores in a way that made practical sense, and the best way to do that was by using their geo coordinates to create more efficient and achievable routes for the sales team.</p>
+
+    <h2><b>Learnings from the Project</b></h2>
+    <p>This project was much larger than it looked on paper, and there was a lot of change management involved. Once the new routes were designed and shared, getting the sales team to actually follow them took time and patience. We had to convince them that the new approach would genuinely make their day easier and more productive.</p>
+
+    <p>The algorithm behind the routing was quite mathematical, but when we explained it to the team, we had to break everything down in simple, plain English so it made sense in their everyday context. Learning how to translate something technical into something relatable was one of the most important skills I gained from this project.</p>
+
+    <p>On the technical side, I gained hands-on experience with clustering techniques like K Medoids and Gaussian Mixture Models, learned how to integrate geo-spatial data for route optimisation, and applied TSP-based algorithms to solve real-world scheduling problems. I also strengthened skills in working with map APIs, travel time matrices, and building interactive dashboards to visualise complex results in a simple, actionable way.</p>
+
+    <h2><b>Objective of the Project</b></h2>
+    <p>The objective of the project was to optimise sales routes in a way that improved daily productivity and helped salespeople perform more consistently.</p>
+
+    <h2><b>Tools Used & Algorithms Used</b></h2>
+    <ul>
+        <li>TSP based optimisation – Used to design the most efficient travel path for each salesperson</li>
+        <li>K Medoids clustering – Grouped stores based on their geo coordinates to create practical route clusters</li>
+        <li>Gaussian Mixture Models – Helped identify natural groupings in areas with mixed density</li>
+        <li>Google Maps API – Used to calculate travel distance and estimated time between store locations</li>
+        <li>Python and SQL – Used for data processing, cleaning, and model building</li>
+        <li>Power BI – Used for visualising routes and sharing insights with the business</li>
+    </ul>
+
+    <h2><b>Dataset and Data Description</b></h2>
+    <ul>
+        <li>Store Code – Unique identifier for each store</li>
+        <li>Latitude and Longitude – Geo coordinates used for route creation</li>
+        <li>Products Purchased – Details of what the store was buying</li>
+        <li>Store Timings – The opening and closing hours of the store</li>
+        <li>Salesperson Code – Identifier linking each store to the assigned salesperson</li>
+        <li>Daily or Weekly Visit Frequency – How often each store needs to be visited</li>
+        <li>Store Category – Type or size of the store for prioritisation</li>
+        <li>Sales Volume – The purchase value of each store</li>
+        <li>Travel Time Matrix – Estimated time between stores, useful for optimisation</li>
+    </ul>
+
+    <h2><b>Approach</b></h2>
+    <ol>
+        <li><b>Collect and Clean Store-Level Data</b>: Gather geo coordinates, store timings, purchase behavior, and salesperson assignments. Clean and standardise the data.</li>
+        <li><b>Map Stores and Visualise Coverage</b>: Plot store locations to identify clusters, high-density pockets, and outliers causing unnecessary travel.</li>
+        <li><b>Cluster Stores Using Geo Coordinates</b>: Apply K Medoids or Gaussian Mixture Models to form natural route clusters.</li>
+        <li><b>Optimise Each Cluster Using Routing Algorithms</b>: Apply TSP-based optimisation to determine the most efficient visiting order.</li>
+        <li><b>Incorporate Store Timings and Visit Constraints</b>: Ensure salespeople do not reach stores outside operating hours.</li>
+        <li><b>Design Practical Daily Routes</b>: Convert output into easy-to-follow sequences, balancing accuracy and practicality.</li>
+        <li><b>Review with Sales Teams and Refine</b>: Collect feedback from on-ground experience to refine routes.</li>
+        <li><b>Publish Updated Routes in Dashboards</b>: Visualise final routes in Power BI for managers and sales teams.</li>
+    </ol>
+
+    <h2><b>Output</b></h2>
+    <ul>
+        <li>Optimized, cluster-wise daily routes for each salesperson with the most efficient store visit sequence.</li>
+        <li>Significant reduction in travel time and improved adherence to store timings.</li>
+        <li>Clear, map-based dashboards enabling managers and sales teams to view, follow, and track the new routes easily.</li>
+    </ul>
+
+    <h2><b>How it Helped the Business</b></h2>
+    <p>It made the entire sales process a lot smoother. Salespeople were able to cover more stores in the same amount of time because their routes finally made sense. Missed visits dropped, store relationships improved, and managers got a much clearer view of who needed support. Overall, it helped the business drive better productivity without putting extra pressure on the team.</p>
+
+    <a href="../../../projects.html" class="back-link"> ← Back to Salesforce Effectiveness </a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
