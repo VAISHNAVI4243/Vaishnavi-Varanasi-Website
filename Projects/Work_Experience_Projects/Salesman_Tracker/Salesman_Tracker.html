@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesman Tracker</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Salesman Tracker</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<!-- WRAPPER FOR TEXT -->
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="ST.jpg" alt="Salesman Tracker" class="project-image">
+
+    <h2><b>Back Story</b></h2>
+    <p>For the company, the main goal had always been to continuously increase sales. After implementing the Salesforce Effectiveness project, route planning and coverage improved a lot. But when we went deeper into the data, we noticed another important pattern. Early morning sales, especially when stores first opened, were extremely critical. That first interaction of the day often decided how much stock the store would pick up. The problem was that many salespeople were not reaching the stores on time during these key hours.</p>
+
+    <p>After several brainstorming sessions between the sales team and the COE team, it became clear that there was no real visibility of when salespeople were actually reaching and leaving the stores. Everything was happening, but nothing was being tracked in a structured, centralised way. That is when the idea of creating a centralised tracking system came up. The plan was to build a Power BI dashboard that would capture and display the check in and check out times of salespeople in real time. To make the process proactive, the dashboard outputs were connected to a chatbot system. Whenever a check in happened later than the expected time, the chatbot would automatically trigger a voice call to alert and notify the salesperson.</p>
+
+    <p>This project was focused on bringing visibility, accountability, and real time action into the sales process, especially during the most critical hours of the day.</p>
+
+    <h2><b>Learnings from the Project</b></h2>
+    <p>Technically, this project was quite challenging as it involved near real time data processing and system integrations. I learned how to handle live data streams, work with event based triggers, and build reliable alerting mechanisms that work without manual intervention.</p>
+
+    <h2><b>Objective of the Project</b></h2>
+    <p>The objective of the project was to track real time check in and check out times of the sales team and ensure timely store visits during critical business hours.</p>
+
+    <h2><b>Tools Used & Algorithms Used</b></h2>
+    <ul>
+        <li>Power BI – Used to build real time dashboards for tracking check in and check out times</li>
+        <li>SQL – Used to extract and structure the transactional data</li>
+        <li>APIs – Used to push data between systems and enable near real time updates</li>
+        <li>Chatbot Framework – Used to trigger automated interactions and alerts</li>
+        <li>Voice Automation System – Used to generate automated outbound calls</li>
+        <li>Time Threshold Logic – Used to compare actual check in times with expected check in times</li>
+        <li>Rule Based Alerting – Used to trigger actions when delays crossed predefined limits</li>
+    </ul>
+
+    <h2><b>Dataset and Data Description</b></h2>
+    <ul>
+        <li>Salesperson ID – Unique identifier for each salesperson</li>
+        <li>Store ID – Unique identifier for each store</li>
+        <li>Check In Time – The actual time the salesperson checked in at the store</li>
+        <li>Check Out Time – The actual time the salesperson checked out from the store</li>
+        <li>Planned Visit Time – The expected time the salesperson was supposed to reach the store</li>
+        <li>Date of Visit – The date of the store visit</li>
+        <li>Geo Location – Latitude and longitude captured at the time of check in</li>
+        <li>Delay Flag – Indicator showing whether the check in was on time or delayed</li>
+    </ul>
+
+    <h2><b>Approach</b></h2>
+    <ol>
+        <li><b>Power BI and Data Engineering Logic</b>: Designed the data pipeline to capture check in and check out events via APIs. Created fact and dimension tables, implemented timestamp standardization, geo fencing checks, duplicate handling, and calculated measures like Delay Minutes and On Time Flag.</li>
+        <li><b>Chatbot Development and Technical Architecture</b>: Built a Python-based event-driven chatbot to notify salespeople of late check-ins. Integrated Twilio for voice alerts, applied delay logic, captured responses, and linked events back to Power BI for reporting. Implemented retries, cooldowns, and logging to ensure reliability.</li>
+    </ol>
+
+    <h2><b>Output</b></h2>
+    <p>We built a centralised Power BI dashboard that showed real time check-in and check-out times for every salesperson. The system flagged late check-ins and triggered automated voice alerts through the chatbot, making it proactive rather than reactive. Managers could now track daily adherence, see patterns in delays, and take timely action, while salespeople received immediate reminders to stay on schedule.</p>
+
+    <h2><b>How it Helped the Business</b></h2>
+    <p>The system gave the business clear visibility into when salespeople were actually reaching the stores, especially during critical early morning hours. It helped reduce missed or delayed visits, ensuring that key sales opportunities were not lost. Managers could now monitor adherence easily and provide support where needed, while salespeople received real time nudges to stay on schedule, improving overall efficiency and productivity.</p>
+
+    <a href="../../../projects.html" class="back-link"> ← Back to Projects </a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
