@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Recommendation Using Spark ML</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.quick-summary {
+    background-color: #f5f3f0;
+    border: 1px solid #dcd6ce;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #4b3e2b;
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.collapsible {
+    background-color: #e0d6ca;
+    color: #4b3e2b;
+    cursor: pointer;
+    padding: 12px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.collapsible:after {
+    content: '\25BC';
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.collapsible.active:after {
+    transform: rotate(-180deg);
+}
+
+.content-collapsible {
+    padding: 10px 15px;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #fdfbf8;
+    border-radius: 8px;
+    color: #3a3024;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #7b4b28;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Movie Recommendation Using Spark ML</div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="spark1.jpg" alt="Movie Recommendation Using Spark ML" class="project-image">
+
+    <div class="quick-summary">
+        <p><span class="highlight">Quick Summary:</span> This project builds a movie recommendation system to predict user ratings for unseen movies using the MovieLens dataset. It leverages collaborative filtering (ALS), autoencoders (TensorFlow), and ensemble learning (H2O.ai) to generate personalized recommendations. Data is preprocessed and split for training and testing, with models evaluated using RMSE and MSE. ALS provides top-N recommendations, autoencoders capture hidden user-movie patterns, and ensemble models improve accuracy by combining predictions. The system shows that hybrid approaches outperform single methods, especially for sparse user profiles. Through this project, I learned large-scale data processing, recommendation algorithms, and model evaluation techniques.</p>
+    </div>
+
+    <button type="button" class="collapsible">Use Case</button>
+    <div class="content-collapsible">
+        <p><span class="highlight">Use Case:</span></p>
+        <p>The main objective of this project is to build a movie recommendation system that predicts how a user would rate a movie they haven’t seen yet. This is based on the MovieLens dataset, which contains user ratings, movie metadata, and tagging information. The use case leverages collaborative filtering, autoencoders, and machine learning techniques to provide personalized movie recommendations.</p>
+        <p>The dataset contains the following components:</p>
+        <ul>
+            <li><b>Ratings Data:</b> Users’ ratings of movies on a scale of 0.5 to 5 stars, along with timestamps.</li>
+            <li><b>Movies Data:</b> Metadata of movies, including titles and genres.</li>
+            <li><b>Tags Data:</b> User-generated tags that describe the movies.</li>
+            <li><b>Genome Data:</b> Precomputed tag relevance scores for each movie.</li>
+            <li><b>Links Data:</b> Identifiers to connect movies with external databases like IMDb and TMDb.</li>
+        </ul>
+        <p><b>Why this project is important:</b></p>
+        <ul>
+            <li>Personalized recommendations help users discover content they are likely to enjoy.</li>
+            <li>Businesses like Netflix or Amazon Prime can use such systems to increase engagement.</li>
+            <li>The project demonstrates different techniques for recommendation systems: collaborative filtering, deep learning, and ensemble machine learning.</li>
+        </ul>
+        <p>The project explores three major approaches:</p>
+        <ul>
+            <li><b>Collaborative Filtering with Spark ML:</b> Using users’ past ratings to predict future ratings.</li>
+            <li><b>Autoencoders for Collaborative Filtering:</b> Using deep learning to learn latent features representing user preferences.</li>
+            <li><b>Ensemble Learning with H2O.ai:</b> Using Random Forests, Gradient Boosting, and Deep Learning to predict ratings with better accuracy.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">Technical Details</button>
+    <div class="content-collapsible">
+        <p><span class="highlight">Algorithms & Libraries Used:</span></p>
+        <ol>
+            <li><b>Alternating Least Squares (ALS)</b> - Library: Spark MLlib<br>
+                Purpose: Collaborative filtering to predict user ratings based on latent factors from user-item interactions.<br>
+                Why Used: ALS efficiently handles large-scale sparse datasets and can parallelize computations for millions of ratings.
+            </li>
+            <li><b>Autoencoders (Deep Learning)</b> - Library: TensorFlow<br>
+                Purpose: Dimensionality reduction and feature learning for collaborative filtering.<br>
+                Why Used: Autoencoders learn a compact representation of user preferences and can handle sparse rating matrices effectively.
+            </li>
+            <li><b>Random Forests</b> - Library: H2O.ai<br>
+                Purpose: Ensemble tree-based learning for regression (predicting ratings).<br>
+                Why Used: Handles nonlinear relationships, reduces overfitting through bagging, and provides feature importance.
+            </li>
+            <li><b>Gradient Boosting Machines (GBM)</b> - Library: H2O.ai<br>
+                Purpose: Boosted trees for predicting ratings.<br>
+                Why Used: GBM builds sequential models focusing on errors from previous models, improving prediction accuracy.
+            </li>
+            <li><b>Deep Learning (Multi-layer Perceptron)</b> - Library: H2O.ai Deep Learning<br>
+                Purpose: Learning complex nonlinear patterns from user-movie interactions.<br>
+                Why Used: Captures complex user preferences that tree-based models might miss.
+            </li>
+        </ol>
+
+        <p><span class="highlight">Tools Used:</span></p>
+        <ol>
+            <li><b>Apache Spark:</b> Distributed data processing and machine learning on large datasets. Allows handling millions of ratings efficiently and supports ALS.</li>
+            <li><b>TensorFlow:</b> Building and training deep neural networks. Enables building autoencoders for collaborative filtering and handling large-scale sparse data.</li>
+            <li><b>H2O.ai:</b> Scalable ML framework supporting Random Forests, GBM, and deep learning. Provides ensemble learning and deep learning capabilities with easy-to-use APIs.</li>
+            <li><b>Pandas & NumPy:</b> Data manipulation and numerical computations. Essential for preprocessing, pivoting ratings, and preparing input for deep learning.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Step-by-Step Workflow</button>
+    <div class="content-collapsible">
+        <ol>
+            <li><b>Loading the Dataset:</b> Movie, ratings, and tag datasets are read and converted into data frames for processing. Spark, TensorFlow, and H2O each handle the dataset differently, but all require clean structured data.</li>
+            <li><b>Understanding the Data:</b> Inspect schema, total records, number of columns, and unique users/movies. Provides insight into data sparsity, scale, and distribution of ratings.</li>
+            <li><b>Data Splitting:</b> Ratings data is split into training and test sets. For H2O, an additional validation set is created to enable early stopping in ensemble learning.</li>
+            <li><b>Model Building – Collaborative Filtering (ALS):</b> Latent factors for users and movies are computed. Cold-start strategy is applied to handle unseen users/movies. Predictions are made on test data and evaluated using RMSE.</li>
+            <li><b>Model Building – Autoencoder:</b> Rating data is pivoted into a user-item matrix. Neural network is designed with one hidden layer to learn compressed representations. Loss function minimizes squared error between predicted and actual ratings. Predictions are made for the test users.</li>
+            <li><b>Model Building – H2O Ensemble Learning:</b> Random Forest, GBM, and Deep Learning models are trained separately. Each model is evaluated on the test set using appropriate metrics (AUC/MSE). Weighted averaging or averaging of predictions is used to improve final rating prediction accuracy.</li>
+            <li><b>Generating Recommendations:</b> ALS model generates top-N recommendations for each user and each movie. Autoencoder and ensemble models provide predicted ratings which can be converted into recommendations.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Results</button>
+    <div class="content-collapsible">
+        <ul>
+            <li><b>Collaborative Filtering (ALS):</b> RMSE indicates the model’s accuracy in predicting ratings. Capable of generating personalized top-N recommendations for users.</li>
+            <li><b>Autoencoders:</b> Mean squared error shows how well the model reconstructs the user-item rating matrix. Can capture hidden relationships between movies and users that traditional ALS may miss.</li>
+            <li><b>H2O Ensemble Models:</b> Random Forest, GBM, and Deep Learning models show varying prediction accuracy. Combining predictions (weighted or average) improves overall performance. This ensemble approach captures both linear and nonlinear patterns in user behavior.</li>
+            <li><b>Key Insights:</b> Movies with higher numbers of ratings generally have more accurate predictions. Autoencoders and ensemble methods complement collaborative filtering, improving prediction for sparse user profiles. Top-N recommendations align with user preferences by learning latent patterns from historical ratings.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">Future Use Cases</button>
+    <div class="content-collapsible">
+        <ul>
+            <li><b>Real-Time Recommendation:</b> Integrate the system into streaming platforms for real-time suggestions based on user interactions.</li>
+            <li><b>Hybrid Recommendation Systems:</b> Combine collaborative filtering with content-based recommendations (genres, tags, metadata) for better accuracy.</li>
+            <li><b>User Profiling & Personalization:</b> Incorporate user demographic or behavioral data to provide more personalized suggestions.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">Project Link</button>
+    <div class="content-collapsible">
+        <p>GitHub: <a href="https://github.com/VVa154/Movie_Recommendation_using_Spark_ML" target="_blank">Movie Recommendation Using Spark ML</a></p>
+    </div>
+
+    <a href="../../../projects.html" class="back-link">← Back to Projects</a>
+
+</section>
+
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

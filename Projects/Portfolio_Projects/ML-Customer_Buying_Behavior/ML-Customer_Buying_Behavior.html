@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Customer Buying Behavior Project</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Quick Summary fixed box */
+.quick-summary {
+    background-color: #f5f3f0; /* soft off-white */
+    border: 1px solid #dcd6ce;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #4b3e2b; /* dark brown for readability */
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Collapsible sections */
+.collapsible {
+    background-color: #e0d6ca; /* muted warm brown */
+    color: #4b3e2b; /* dark brown */
+    cursor: pointer;
+    padding: 12px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.collapsible:after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.collapsible.active:after {
+    transform: rotate(-180deg);
+}
+
+.content-collapsible {
+    padding: 10px 15px;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #fdfbf8; /* very light cream */
+    border-radius: 8px;
+    color: #3a3024; /* softer dark brown for content text */
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #7b4b28; /* match CNN project */
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">ML Customer Buying Behavior</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="svm.jpg" alt="ML Customer Buying Behavior" class="project-image">
+
+    <!-- Quick Summary -->
+    <div class="quick-summary">
+        <p><span class="highlight">Quick Summary:</span> This project predicts customer purchase behavior using machine learning based on call center interactions. The objective was to identify customers likely to make a purchase, helping sales teams prioritize leads. Data from real customer calls was processed and transformed into features suitable for machine learning models. Algorithms like support vector machines, decision trees, and gradient boosting were applied and evaluated. The models successfully classified customers as likely buyers or non-buyers, with gradient boosting achieving the highest accuracy. This project can be extended to real-time analytics, automated lead scoring, and personalized marketing strategies, while providing practical experience in data-driven decision-making.</p>
+
+        <p>Through this project, I gained hands-on experience in creating and preparing a dataset from raw call data, performing feature engineering, and applying machine learning algorithms. I learned to evaluate model performance, interpret results for actionable insights, and translate real-world customer interactions into predictive solutions. This project also improved my understanding of the practical impact of ML in business processes.</p>
+    </div>
+
+    <!-- Collapsible sections -->
+
+    <button type="button" class="collapsible">Use Case</button>
+    <div class="content-collapsible">
+        <p><span class="highlight">Use Case:</span></p>
+        <p>In 2016, we developed a machine learning model to predict whether a customer would make a purchase after interacting with a call center. We manually listened to all customer calls to understand behavior and preferences. From this, we created a structured dataset including:</p>
+        <ul>
+            <li>Tone and approach of the call center agent.</li>
+            <li>Total duration of calls with the customer.</li>
+            <li>Whether the customer requested a follow-up.</li>
+            <li>Level of interest expressed by the customer.</li>
+            <li>Time remaining before the offer or service expired.</li>
+            <li>Status of the offer at the time of interaction.</li>
+            <li>Final decision on whether the customer made a purchase.</li>
+        </ul>
+        <p>The goal was to use these features to train a model that could predict customer purchasing behavior. This would allow call centers to focus on leads with higher probability of purchase, improving efficiency and resource allocation.</p>
+    </div>
+
+    <button type="button" class="collapsible">Technical Details</button>
+    <div class="content-collapsible">
+        <p><span class="highlight">Algorithms:</span></p>
+        <ul>
+            <li><b>Support Vector Machine:</b> Used to classify customers into likely buyers and non-buyers. Effective for distinguishing classes in complex datasets and works well with limited data.</li>
+            <li><b>Decision Tree:</b> Builds a flowchart of decisions to determine outcomes. Easy to interpret and helps identify which factors most influence the purchasing decision.</li>
+            <li><b>Gradient Boosting:</b> Combines multiple small models into a strong predictive model. Improves accuracy and reduces errors by learning from previous mistakes in predictions.</li>
+        </ul>
+
+        <p><span class="highlight">Tools and Libraries:</span></p>
+        <ul>
+            <li><b>Data Handling Tools:</b> Used to organize, clean, and preprocess data efficiently.</li>
+            <li><b>Mathematical Tools:</b> Provided calculations and transformations necessary for model training.</li>
+            <li><b>Visualization Tools:</b> Used to plot results and analyze performance patterns.</li>
+            <li><b>Machine Learning Library:</b> Provides ready-to-use algorithms for classification and evaluation.</li>
+            <li><b>Data Encoding Tool:</b> Converts descriptive categories into numeric form so models can process them.</li>
+        </ul>
+    </div>
+
+   <button type="button" class="collapsible">Step-by-Step Process</button>
+    <div class="content-collapsible">
+        <ol>
+            <li><b>Data Preparation:</b> Imported the collected information into a structured format. Removed unnecessary details that were not relevant to predictions. Checked for missing information and ensured all entries were valid.</li>
+            <li><b>Feature Processing:</b> Selected meaningful information related to customer behavior and interactions. Converted descriptive categories (like tone and interest levels) into numerical values for analysis.</li>
+            <li><b>Data Splitting:</b> Divided the data into input information and output results. Further split the input data into training, validation, and testing sets for proper model evaluation.</li>
+            <li><b>Model Training:</b> Trained three different models using the training set. Validated each model on separate validation data to tune performance.</li>
+            <li><b>Model Evaluation:</b> Measured how well the models predicted customer decisions on unseen data. Analyzed correct and incorrect predictions using tables showing true and false results. Calculated accuracy and other performance measures to compare models.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Results</button>
+    <div class="content-collapsible">
+        <ol>
+            <li><b>Support Vector Model:</b> Provided reasonable separation between likely buyers and non-buyers. Some misclassifications occurred in borderline cases.</li>
+            <li><b>Decision Tree Model:</b> Improved interpretability, showing which factors most influenced customer decisions. Slightly better accuracy than the first model but required careful tuning to avoid overfitting.</li>
+            <li><b>Gradient Boosting Model:</b> Achieved the highest accuracy among all models. Produced reliable probability estimates for predictions. Reduced the impact of noisy or less important information, making predictions more robust. Overall, the results demonstrated that customer interactions and behavior can effectively predict purchase decisions, with the ensemble model performing best.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Key Insights</button>
+    <div class="content-collapsible">
+       <ol>
+    <li><b>Gradient Boosting:</b> Achieved the highest predictive accuracy.</li>
+    <li><b>Key Customer Interactions:</b> Factors like call duration, agent tone, and level of interest strongly influence purchase likelihood.</li>
+    <li><b>Practical Impact:</b> The project demonstrates real-world applications of machine learning in sales optimization.</li>
+        </ol>
+
+    </div>
+    <button type="button" class="collapsible">Future Applications</button>
+    <div class="content-collapsible">
+        <ul>
+            <li><b>Automated Lead Prioritization:</b> Identify customers with high likelihood of purchase and prioritize them for follow-ups.</li>
+            <li><b>Call Center Optimization:</b> Focus training on communication styles and approaches that increase success rates.</li>
+            <li><b>Real-time Decision Support:</b> Use live interaction data to guide agents during conversations.</li>
+            <li><b>Personalized Marketing Strategies:</b> Combine predictions with other customer information to provide targeted offers.</li>
+            <li><b>Expansion to Other Domains:</b> Apply the model to other sales or subscription-based services to improve overall customer engagement.</li>
+        </ul>
+    </div>
+    
+    <button type="button" class="collapsible">Project Link</button>
+    <div class="content-collapsible">
+        <p>GitHub: <a href="https://github.com/VVa154/ML-Customer_Buying_Behavior" target="_blank">ML Customer Buying Behavior</a></p>
+    </div>
+
+    <a href="../../../projects.html" class="back-link">← Back to Projects</a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Collapsible sections
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

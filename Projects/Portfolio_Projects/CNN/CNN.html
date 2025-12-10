@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary Image Classification Project</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Quick Summary fixed box */
+.quick-summary {
+    background-color: #f5f3f0; /* soft off-white */
+    border: 1px solid #dcd6ce;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #4b3e2b; /* dark brown for readability */
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Collapsible sections */
+.collapsible {
+    background-color: #e0d6ca; /* muted warm brown */
+    color: #4b3e2b; /* dark brown */
+    cursor: pointer;
+    padding: 12px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.collapsible:after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.collapsible.active:after {
+    transform: rotate(-180deg);
+}
+
+.content-collapsible {
+    padding: 10px 15px;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #fdfbf8; /* very light cream */
+    border-radius: 8px;
+    color: #3a3024; /* softer dark brown for content text */
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.project-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Binary Image Classifier</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <img src="IC.jpg" alt="Binary Image Classification" class="project-image">
+
+    <!-- Quick Summary -->
+    <div class="quick-summary">
+        <p><b>Quick Summary:</b> This project focused on building a binary image classification system to distinguish between two individuals using Convolutional Neural Networks and transfer learning. Images were collected, preprocessed, and converted into arrays, and models such as VGG16, VGG19, and InceptionV3 were trained to recognize unique facial features. The models achieved high accuracy in classifying test images and demonstrated the effectiveness of transfer learning on small datasets. The system can be extended to include multiple people, real-time face recognition, or integration with attendance and access control systems. The project provided hands-on experience in the complete workflow of deep learning-based image classification, from data preparation to model evaluation and deployment.</p>
+    </div>
+
+    <!-- Collapsible sections -->
+
+    <button type="button" class="collapsible">Use Case</button>
+    <div class="content-collapsible">
+        <p><b>A Binary Image Classification System using CNN & Transfer Learning</b></p>
+        <p>The objective of the project was to design and implement a simple yet complete image-classification pipeline using Convolutional Neural Networks (CNNs). The main task was to classify images of two classmates: <b>Di j</b> and <b>Su</b>. We manually captured multiple photos of both classmates, created separate folders for each class, and used them as the basis for training a supervised classification model.</p>
+        <p>The idea behind the use case was not merely to detect a face, but to distinguish between two specific individuals using machine-learning techniques. This made the problem a <b>binary classification challenge</b> where the system needed to learn the unique visual patterns present in each person’s images—such as facial structure, color tones, hair features, etc.</p>
+        <p>Through this project, we aimed to demonstrate:</p>
+        <ul>
+            <li>How to build a complete image-classification workflow from scratch.</li>
+            <li>How raw images are converted into machine-readable numerical format.</li>
+            <li>How CNN architectures learn and extract features.</li>
+            <li>How transfer learning can enhance accuracy on small datasets.</li>
+            <li>How to evaluate the performance of the network using accuracy, confusion matrices, and predictions on test images.</li>
+            <li>The entire pipeline acted as a practical introduction to deep learning-based computer vision.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">Algorithms, Libraries & Tools Used</button>
+    <div class="content-collapsible">
+        <p><b>Algorithms Used:</b></p>
+        <ul>
+            <li><b>Convolutional Neural Network (CNN)</b>: deep-learning models for image processing.</li>
+            <li><b>Max Pooling</b>: reduces spatial size of feature maps and retains important info.</li>
+            <li><b>Dropout</b>: randomly deactivates neurons to reduce overfitting.</li>
+            <li><b>Softmax Classification</b>: converts outputs into probability scores.</li>
+            <li><b>Transfer Learning (VGG16, VGG19, InceptionV3)</b>: uses pre-trained models for higher accuracy.</li>
+        </ul>
+
+        <p><b>Libraries Used:</b></p>
+        <ul>
+            <li><b>OpenCV (cv2)</b>: reading, resizing, preprocessing images.</li>
+            <li><b>NumPy</b>: converting images to arrays and normalizing pixel values.</li>
+            <li><b>Matplotlib</b>: visualizing dataset and results.</li>
+            <li><b>Keras / TensorFlow</b>: building, training, and evaluating CNNs.</li>
+            <li><b>Scikit-Learn</b>: dataset splitting, shuffling, evaluation metrics.</li>
+        </ul>
+
+        <p><b>Tools Used:</b></p>
+        <ul>
+            <li><b>Model Serialization (JSON / H5 / HDF5)</b>: save and reuse trained models.</li>
+            <li><b>Pre-trained Architectures (VGG16, VGG19, InceptionV3)</b>: backbone models for image classification.</li>
+        </ul>
+    </div>
+
+   <button type="button" class="collapsible">Code Flow Explanation</button>
+    <div class="content-collapsible">
+        <ol>
+            <li><b>Dataset Collection:</b> Images of two individuals (<b>Di</b> and <b>Su</b>) were captured and stored in separate folders. These folders became the two classes of the dataset.</li>
+            <li><b>Loading Dataset Paths:</b> The system identified the folder names and used them to understand class labels.</li>
+            <li><b>Initializing Image Parameters:</b> Image dimensions (224×224), channels (3), and epochs were specified to standardize the dataset.</li>
+            <li><b>Reading and Preprocessing Images:</b> Images loaded, resized to 224×224, and stored in lists.</li>
+            <li><b>Visual Verification:</b> Sample images displayed to verify dataset correctness.</li>
+            <li><b>Converting Images to Numerical Arrays:</b> All images converted to NumPy arrays, normalized to 0–1, and reshaped for CNN input.</li>
+            <li><b>Creating Label Vectors:</b> 0 for Di, 1 for Su; converted to one-hot encoding.</li>
+            <li><b>Shuffling the Dataset:</b> Dataset and labels shuffled to avoid ordering bias.</li>
+            <li><b>Displaying Sanity-Check Results:</b> Verify shuffled images and labels.</li>
+            <li><b>Splitting into Training and Test Sets:</b> Training (80%) and testing (20%) subsets.</li>
+            <li><b>Building the CNN Model:</b> Sequential CNN with convolution blocks, max pooling, dropout, dense layers, and softmax output.</li>
+            <li><b>Compiling the Model:</b> Categorical cross-entropy loss, RMSProp optimizer, accuracy metric.</li>
+            <li><b>Training the Model:</b> Model trained on training set with validation monitoring.</li>
+            <li><b>Evaluating the Model:</b> Accuracy and loss computed on test set.</li>
+            <li><b>Generating Predictions:</b> Probabilities converted to class labels.</li>
+            <li><b>Confusion Matrix:</b> Analyze true positives, false positives, overall quality.</li>
+            <li><b>Displaying Predictions Visually:</b> Show test images alongside predicted outputs.</li>
+            <li><b>Saving the Model and Weights:</b> Architecture saved as JSON, weights saved in H5/HDF5 format.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Results</button>
+    <div class="content-collapsible">
+        <p>The model successfully differentiated the two individuals purely based on images. Key outcomes include:</p>
+        <ol>
+            <li><b>Accuracy Performance:</b> The base CNN achieved reasonable accuracy given the small dataset; correctly classified most images.</li>
+            <li><b>Confusion Matrix Insights:</b> True positives were high; misclassifications minimal, mainly due to lighting, angle, or expression variations.</li>
+            <li><b>Visual Predictions:</b> Test images displayed with predicted outputs; correct identification with strong confidence.</li>
+            <li><b>Impact of Transfer Learning:</b> VGG16, VGG19, InceptionV3 improved accuracy significantly; subtle facial features correctly differentiated; VGG-based models gave higher stability.</li>
+        </ol>
+    </div>
+
+    <button type="button" class="collapsible">Future Scope</button>
+    <div class="content-collapsible">
+        <ul>
+            <li><b>Multi-Person Classification:</b> Add more individuals for multi-class recognition.</li>
+            <li><b>Real-Time Face Recognition System:</b> Live camera feed for instant classification.</li>
+            <li><b>Integration with Attendance or Access Systems:</b> Automate attendance, smart locks, lab/office access.</li>
+        </ul>
+    </div>
+    
+    <button type="button" class="collapsible">Project Link</button>
+    <div class="content-collapsible">
+        <p>GitHub: <a href="https://github.com/VVa154/Binary_Image_Classification-CNN/tree/main" target="_blank">Binary Image Classification</a></p>
+    </div>
+
+    <a href="../../../projects.html" class="back-link">← Back to Projects</a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Collapsible sections
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
