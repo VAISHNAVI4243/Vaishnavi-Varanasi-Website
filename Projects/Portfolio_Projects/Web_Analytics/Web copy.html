@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Analytics - Vaishnavi Varanasi</title>
+<link rel="stylesheet" href="../../../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+/* Restrict only text width — does NOT affect navbar or banner */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Mobile hamburger & content adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .project-detail {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+    }
+
+    .hamburger span {
+        width: 20px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    h1, h2, p, ul, li, a {
+        word-wrap: break-word;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7b4b28;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.project-image {
+    width: 60%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Product Diagnostics and Improvement Plan</div>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="../../../projects.html" class="active">Projects</a></li>
+    </ul>
+</nav>
+
+<!-- WRAPPER FOR TEXT -->
+<div class="content-wrapper">
+
+<section class="project-detail">
+
+    <h2><strong>Back Story</strong></h2>
+    <p>
+        This was an independent project done as part of a Web Analytics initiative. The project focused on 
+        understanding why digital products were underperforming and how structured, data-driven testing 
+        could improve their performance across the user journey.
+    </p>
+
+    <h2><strong>Objective of the Project</strong></h2>
+    <p>
+        To identify funnel-level gaps using structured frameworks and apply statistically validated experiments 
+        to improve adoption, engagement, and long-term retention.
+    </p>
+
+    <h2><strong>Tools and Techniques Used</strong></h2>
+    <ul>
+        <li>Google Analytics</li>
+        <li>A/B testing</li>
+        <li>Statistical hypothesis testing</li>
+        <li>Likert scale based surveys</li>
+        <li>Excel based statistical analysis</li>
+    </ul>
+
+    <h2><strong>Tests Conducted</strong></h2>
+
+    <p><strong>1. Ad Messaging A/B Test</strong></p>
+    <p>What this test did: It evaluated the impact of different ad copies on Click Through Rate (CTR) by comparing a generic message with a benefit-focused message.</p>
+    <p>Result: CTR improved from <strong>11%</strong> to <strong>27%</strong>, showing strong statistical uplift.</p>
+
+    <p><strong>2. Channel Effectiveness Test</strong></p>
+    <p>What this test did: It measured Engagement Rate across multiple platforms including social media, email, and display ads to identify the most effective channel.</p>
+    <p>Result:Social media showed <strong>14%</strong> engagement, email <strong>9%</strong>, and display ads <strong>4%</strong>.</p>
+
+    <p><strong>3. Brand Alignment Survey Test</strong></p>
+    <p>What this test did:  It evaluated how well the product value proposition resonated with users using a <strong>5-point Likert Scale</strong>.</p>
+    <p>Result:The Brand Alignment Score improved from <strong>2.8</strong> to <strong>3.9</strong>.</p>
+
+    <p><strong>4. Message Clarity Test</strong></p>
+    <p>What this test did: It measured Message Comprehension Rate by comparing original onboarding content with simplified content.</p>
+    <p>Result: Comprehension improved from <strong>28%</strong> to <strong>72%</strong>.</p>
+
+    <p><strong>5. Setup Time Retention Analysis</strong></p>
+    <p>What this test did: It analyzed how setup time correlated with retention.</p>
+    <p>Result:Users with setup time under <strong>6 minutes</strong> showed <strong>79%</strong> retention; those above <strong>6 minutes</strong> showed only <strong>18%</strong>.</p>
+
+    <p><strong>6. Net Promoter Score (NPS) Test</strong></p>
+    <p>What this test did: Measured overall user satisfaction through NPS.</p>
+    <p>Result:NPS increased from <strong>12</strong> to <strong>41</strong>.</p>
+
+    <h2><strong>Metrics Tracked</strong></h2>
+    <ul>
+        <li>Click Through Rate (CTR)</li>
+        <li>Bounce Rate</li>
+        <li>Engagement Rate</li>
+        <li>Brand Alignment Score</li>
+        <li>Message Comprehension Rate</li>
+        <li>Retention Rate</li>
+        <li>Net Promoter Score (NPS)</li>
+    </ul>
+
+    <h2><strong>Output</strong></h2>
+    <p>
+        The overall output of the project showed statistically significant improvements across the funnel. 
+        Key performance metrics improved consistently after each test, proving that structured experimentation 
+        and data-driven decisions can strongly enhance digital product performance.
+    </p>
+
+    <a href="../../../projects.html" class="back-link">← Back to Projects</a>
+
+</section>
+
+</div> <!-- END WRAPPER -->
+
+<footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>

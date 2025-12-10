@@ -9,61 +9,60 @@
 
 <style>
 
-/* Restrict only text width — does NOT affect navbar or banner */
 .content-wrapper {
     max-width: 900px; 
     margin: 0 auto;
 }
 
-/* Mobile hamburger & content adjustments */
+/* Collapsible styling */
+.collapsible {
+    background-color: #e0d6ca;
+    color: #4b3e2b;
+    cursor: pointer;
+    padding: 14px 18px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible:after {
+    content: '\25BC';
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.collapsible.active:after {
+    transform: rotate(180deg);
+}
+
+.content-collapsible {
+    padding: 15px 20px;
+    display: none;
+    overflow: hidden;
+    background-color: #fdfbf8;
+    border-radius: 10px;
+    margin-top: 8px;
+    line-height: 1.6;
+    color: #3a3024;
+}
+
+.section-box {
+    background: #f7f5f2;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #ded6cf;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-    body {
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-
-    .project-detail {
-        padding: 0 10px;
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-        margin-left: auto;
-    }
-    .hamburger span {
-        width: 20px;
-        height: 3px;
-        background-color: #fff;
-        transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 4px);
-    }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px);
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-        gap: 10px;
-    }
-    .nav-links.active {
-        display: flex;
-    }
-
-    h1, h2, p, ul, li, a {
-        word-wrap: break-word;
-    }
-
     .content-wrapper {
         max-width: 100%;
         padding: 0 5px;
@@ -73,7 +72,6 @@
 .project-image {
     width: 60%;
     max-width: 400px;
-    height: auto;
     border-radius: 16px;
     margin: 20px auto;
     display: block;
@@ -92,18 +90,15 @@
 }
 
 </style>
-
 </head>
+
 <body>
 
 <nav class="navbar">
     <div class="logo">Ad-Hoc Projects</div>
 
-    <!-- Hamburger for mobile -->
     <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 
     <ul class="nav-links" id="nav-links">
@@ -111,7 +106,6 @@
     </ul>
 </nav>
 
-<!-- WRAPPER FOR TEXT -->
 <div class="content-wrapper">
 
 <section class="project-detail">
@@ -121,8 +115,10 @@
     <h2><b>Some Ad-Hoc Projects</b></h2>
     <p>Apart from the major, high-impact projects, I was also assigned several ad-hoc projects that required immediate attention. These projects turned out to be huge learning opportunities for me and often sparked ideas that later shaped the bigger initiatives.</p>
 
-    <ol>
-        <li><b>Geo-fencing of stores and Removal of Ghost Outlets</b></li>
+    <!-- Project 1 -->
+    <div class="section-box">
+    <button class="collapsible">📍 Geo-fencing of Stores & Removal of Ghost Outlets</button>
+    <div class="content-collapsible">
         <p>In this project, geo tagging of stores was made mandatory to ensure that salespeople were actually visiting the outlets and taking orders. To enforce this, we implemented a <b>100 meter geo fencing rule</b>, so that an order could only be placed if the salesperson was physically within the defined area of the store.</p>
 
         <p>While implementing this, we discovered that a number of stores were incorrectly tagged. Some appeared under a bridge, others under a tree, which explained why certain orders were not being captured correctly.</p>
@@ -131,36 +127,55 @@
 
         <p>Once the problematic locations were identified, the team physically verified a few sample stores to confirm the errors. This process not only corrected the geo tagging but also cleaned up the system and improved <b>master data management</b>, ensuring that the data now reflected real, actionable stores.</p>
 
-        <li><b>HoReCa Connect – High potential outlet intelligence</b></li>
-        <p>This project was built by a small team of three people, and I had the opportunity to lead the work. We started by creating a structured database of Hotels, Restaurants and Caterers and built a complete master list of outlets. From this list, we identified and tagged the ones that had high potential to become buyers of our company’s products based on outlet type, size, location, and historical buying behavior.</p>
+        <p>Identified approximately <b>30,000</b> ghost retail outlets, improving data quality by <b>15%</b> and enabling more accurate route planning in subsequent projects.</p>
+    </div>
+</div>
 
-        <p>One of the most interesting parts of the project was working with restaurant and catering menus. We collected menu level data and analyzed the monthly consumption patterns. We broke down dishes into recipe level ingredients and mapped them to our product portfolio. Based on this mapping, we built a simple demand estimation logic that projected the quantity of our products that each outlet could consume every month. These projections were then displayed directly inside the salesperson’s app, so they could easily pitch the right products with the right quantities during store visits.</p>
 
-        <p>From a technical perspective, we applied multiple filtering techniques to make the recommendations more intelligent. We used rule based filtering to shortlist relevant products based on outlet type and cuisine. We also used <b>collaborative filtering</b> principles where buying behavior of similar outlets was used to recommend products. For cross selling, we implemented <b>market basket analysis</b> using frequent itemset mining and association rules, which helped identify product combinations that were commonly bought together.</p>
+    <!-- Project 2 -->
+    <div class="section-box">
+    <button class="collapsible">🍽️ HoReCa Connect – High Potential Outlet Intelligence</button>
+    <div class="content-collapsible">
+        <p>This project was built by a small team of three people, and I had the opportunity to lead the work. We started by creating a structured database of Hotels, Restaurants, and Caterers and built a complete master list of outlets. From this list, we identified and tagged the ones that had high potential to become buyers of our company’s products based on outlet type, size, location, and historical buying behavior.</p>
 
-        <p>On the technology side, we built the mobile application using <b>Flutter</b> to ensure it worked smoothly across devices. For the backend, we used <b>Google Cloud Firebase</b> as the database, which helped us store outlet data, product mappings, and recommendation logic in real time. The Flutter app was connected to Firebase through APIs, enabling real time data sync and fast access to recommendations for the sales team.</p>
+        <p>One of the most interesting parts of the project was working with restaurant and catering menus. We collected menu-level data and analyzed the monthly consumption patterns. We broke down dishes into recipe-level ingredients and mapped them to our product portfolio. Based on this mapping, we built a simple demand estimation logic that projected the quantity of our products that each outlet could consume every month. These projections were then displayed directly inside the salesperson’s app, so they could easily pitch the right products with the right quantities during store visits.</p>
 
-        <p>Overall, the app turned a very manual and guess based sales process into a structured, data driven, and guided selling experience for the field team.</p>
-    </ol>
+        <p>From a technical perspective, we applied multiple filtering techniques to make the recommendations more intelligent. We used rule-based filtering to shortlist relevant products based on outlet type and cuisine. We also used <b>collaborative filtering</b> principles where buying behavior of similar outlets was used to recommend products. For cross-selling, we implemented <b>market basket analysis</b> using frequent itemset mining and association rules, which helped identify product combinations that were commonly bought together.</p>
+
+        <p>On the technology side, we built the mobile application using <b>Flutter</b> to ensure it worked smoothly across devices. For the backend, we used <b>Google Cloud Firebase</b> as the database, which helped us store outlet data, product mappings, and recommendation logic in real time. The Flutter app was connected to Firebase through APIs, enabling real-time data sync and fast access to recommendations for the sales team.</p>
+
+        <p>Overall, the app turned a very manual and guess-based sales process into a structured, data-driven, and guided selling experience for the field team, and with this project we increased our customer base by around <b>50 new outlets</b> per month.</p>
+    </div>
+</div>
+
 
    <a href="../../../projects.html" class="back-link"> ← Back to Projects </a>
 
 </section>
-
-</div> <!-- END WRAPPER -->
+</div>
 
 <footer class="footer">
     <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
 </footer>
 
 <script>
-// Hamburger toggle
+// Hamburger
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
+});
+
+// Collapsibles
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    });
 });
 </script>
 

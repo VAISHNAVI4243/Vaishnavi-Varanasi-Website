@@ -15,6 +15,60 @@
     margin: 0 auto;
 }
 
+/* Quick Summary fixed box */
+.quick-summary {
+    background-color: #f5f3f0; /* soft off-white */
+    border: 1px solid #dcd6ce;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #4b3e2b; /* dark brown for readability */
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Collapsible sections */
+.collapsible {
+    background-color: #e0d6ca; /* muted warm brown */
+    color: #4b3e2b; /* dark brown */
+    cursor: pointer;
+    padding: 12px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.collapsible:after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.collapsible.active:after {
+    transform: rotate(-180deg);
+}
+
+.content-collapsible {
+    padding: 10px 15px;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #fdfbf8; /* very light cream */
+    border-radius: 8px;
+    color: #3a3024; /* softer dark brown for content text */
+}
+
 /* Mobile hamburger & content adjustments */
 @media (max-width: 768px) {
     body {
@@ -110,78 +164,98 @@
     </ul>
 </nav>
 
-<!-- WRAPPER FOR TEXT -->
 <div class="content-wrapper">
 
 <section class="project-detail">
 
     <img src="SP.jpg" alt="Sales Prediction - Times of India" class="project-image">
 
-    <h2><b>Back Story</b></h2>
-    <p>During my MBA in 2019, adoption of data analytics for business decisions was still at a very early stage. Companies were just starting to experiment with how data could actually help them make smarter choices. During this time, I got selected as a Data Analyst intern at Bennett Coleman and Company Limited, the company behind one of India’s most important newspapers, the Times of India.
-    As part of the internship, we were expected to pick a project that could go live in about two months. Around the same time, an urgent problem came up that needed immediate attention. In two major metro cities, Mumbai and Delhi, the company was struggling to manage stock at its depots. Some days, demand was unexpectedly high and depots ran out of stock, while on other days, there was excess stock that could have been used elsewhere.
-    At that time, stock transfers between depots were not possible. This made it difficult to plan effectively. The business wanted a solution that could identify patterns in past sales and predict how much stock each depot should hold on any given day, so that demand could be met more accurately and waste could be minimized.</p>
+    <!-- Quick Summary -->
+    <div class="quick-summary">
+        <p>This project aimed to predict daily newspaper sales at each depot to optimize stock management. Using time series models such as ARIMA, Holt-Winters, and Exponential Smoothing, along with Python and Excel for data processing, we built a forecasting system and Power BI dashboards. The output provided 88–90% accurate sales predictions, highlighted high-demand days, and prevented stockouts. The business gained proactive, data-driven inventory planning, while I strengthened skills in forecasting, feature engineering, and translating technical insights into actionable decisions.</p>
+    </div>
 
-    <h2><b>Learnings from the Project</b></h2>
-    <p>Working in a big company in the initial days of my career gave me the chance to interact with managers, departmental heads, and cross functional teams, teaching me how to communicate insights clearly.
-    Technically, I strengthened my skills in time series forecasting, feature engineering, and translating model outputs into actionable business decisions.
-    Since the project had to go live in just two months, I experienced the full cycle of data collection, coding, and discussions, and learned to work effectively under tight deadlines in my very first role.
-    I also learned the importance of understanding business context first, realizing that the best technical solutions only work when they truly fit real world constraints.</p>
+    <!-- Collapsible sections -->
+    <button type="button" class="collapsible">Back Story</button>
+    <div class="content-collapsible">
+        <p>During my MBA in 2019, adoption of data analytics for business decisions was still at a very early stage. Companies were just starting to experiment with how data could actually help them make smarter choices. During this time, I got selected as a Data Analyst intern at Bennett Coleman and Company Limited, the company behind one of India’s most important newspapers, the Times of India.
+        As part of the internship, we were expected to pick a project that could go live in about two months. Around the same time, an urgent problem came up that needed immediate attention. In two major metro cities, Mumbai and Delhi, the company was struggling to manage stock at its depots. Some days, demand was unexpectedly high and depots ran out of stock, while on other days, there was excess stock that could have been used elsewhere.
+        At that time, stock transfers between depots were not possible. This made it difficult to plan effectively. The business wanted a solution that could identify patterns in past sales and predict how much stock each depot should hold on any given day, so that demand could be met more accurately and waste could be minimized.</p>
+    </div>
 
-    <h2><b>Objective of the Project</b></h2>
-    <p>The goal of the project was to predict daily newspaper sales at each depot so that stock could be planned more accurately. This would help ensure that high-demand days never ran out of stock, while also avoiding excess on low-demand days, making the overall supply more efficient and aligned with real patterns.</p>
+    <button type="button" class="collapsible">Learnings from the Project</button>
+    <div class="content-collapsible">
+        <p>Working in a big company in the initial days of my career gave me the chance to interact with managers, departmental heads, and cross-functional teams, teaching me how to communicate insights clearly. Technically, I strengthened my skills in time series forecasting, feature engineering, and translating model outputs into actionable business decisions. I also learned the importance of understanding business context first, realizing that the best technical solutions only work when they truly fit real-world constraints.</p>
+    </div>
 
-    <h2><b>Tools/ Algorithms Used</b></h2>
-    <ul>
-        <li>ARIMA – Used for time series forecasting to capture trends and seasonality in daily sales</li>
-        <li>Holt-Winters – Applied for smoothing and short-term prediction of depot-wise sales</li>
-        <li>Exponential Smoothing – Used as an additional technique to handle fluctuating demand patterns</li>
-        <li>Power BI – Created interactive dashboards to visualise predicted versus actual sales and trends</li>
-        <li>Excel – Used for quick analysis, data validation, and reporting</li>
-        <li>Python (pandas, numpy, statsmodels) – Used for data cleaning, manipulation, and implementing forecasting models</li>
-    </ul>
+    <button type="button" class="collapsible">Objective of the Project</button>
+    <div class="content-collapsible">
+        <p>The goal of the project was to predict daily newspaper sales at each depot so that stock could be planned more accurately. This would help ensure that high-demand days never ran out of stock, while also avoiding excess on low-demand days, making the overall supply more efficient and aligned with real patterns.</p>
+    </div>
 
-    <h2><b>Dataset and Data Description</b></h2>
-    <ul>
-        <li>Depot ID – Unique identifier for each depot</li>
-        <li>Date – The date of the sales record</li>
-        <li>Daily Sales – Number of newspapers sold at the depot on that day</li>
-        <li>Day of the Week – Captures weekday/weekend patterns in demand</li>
-        <li>City – The city where the depot is located (Mumbai or Delhi)</li>
-        <li>Previous Day Sales – Sales from the previous day, used for trend analysis</li>
-        <li>Moving Average Sales – Derived field to capture short-term trends</li>
-        <li>Stock Availability – Number of newspapers available at the depot at the start of the day</li>
-    </ul>
+    <button type="button" class="collapsible">Tools/ Algorithms Used</button>
+    <div class="content-collapsible">
+        <ul>
+            <li>ARIMA – Used for time series forecasting to capture trends and seasonality in daily sales</li>
+            <li>Holt-Winters – Applied for smoothing and short-term prediction of depot-wise sales</li>
+            <li>Exponential Smoothing – Used as an additional technique to handle fluctuating demand patterns</li>
+            <li>Power BI – Created interactive dashboards to visualise predicted versus actual sales and trends</li>
+            <li>Excel – Used for quick analysis, data validation, and reporting</li>
+            <li>Python (pandas, numpy, statsmodels) – Used for data cleaning, manipulation, and implementing forecasting models</li>
+        </ul>
+    </div>
 
-    <h2><b>Approach</b></h2>
-    <p>The approach for this project focused on understanding historical sales patterns and building a forecasting system that could help the business make smarter stock decisions at each depot. We approached it from both a technical and business perspective.
-    From the business side, our main goal was to ensure that every depot had the right amount of stock each day. We started by studying past sales trends to identify high-demand days, low-demand days, and patterns based on weekdays, weekends, and city-specific behavior. The idea was to predict how many newspapers each depot would need so that stockouts could be avoided and excess stock minimized.
-    We also worked closely with the operations team to understand depot constraints, such as storage limits and no possibility of inter-depot transfers, which helped us define realistic stock targets. The goal was always to make the solution actionable for the business, not just technically accurate.
-    On the technical side, we followed a structured data analytics workflow:
-    <ul>
-        <li>Data Collection and Cleaning – Collected daily sales data, depot IDs, city, and historical stock data; cleaned for missing values and outliers.</li>
-        <li>Feature Engineering – Derived fields like previous day sales, moving averages, and day-of-week flags.</li>
-        <li>Model Selection and Forecasting – Implemented ARIMA and Holt-Winters; experimented with exponential smoothing for cross-validation.</li>
-        <li>Validation and Accuracy Checks – Metrics like RMSE and MAPE were used.</li>
-        <li>Visualisation and Reporting – Power BI dashboards and Excel reporting.</li>
-        <li>Iterative Refinement – Feedback from depot managers and actual sales outcomes incorporated.</li>
-    </ul></p>
+    <button type="button" class="collapsible">Dataset and Data Description</button>
+    <div class="content-collapsible">
+        <ul>
+            <li>Depot ID – Unique identifier for each depot</li>
+            <li>Date – The date of the sales record</li>
+            <li>Daily Sales – Number of newspapers sold at the depot on that day</li>
+            <li>Day of the Week – Captures weekday/weekend patterns in demand</li>
+            <li>City – The city where the depot is located (Mumbai or Delhi)</li>
+            <li>Previous Day Sales – Sales from the previous day, used for trend analysis</li>
+            <li>Moving Average Sales – Derived field to capture short-term trends</li>
+            <li>Stock Availability – Number of newspapers available at the depot at the start of the day</li>
+        </ul>
+    </div>
 
-    <h2><b>Output</b></h2>
-    <p>The models predicted daily sales at each depot with around 88–90% accuracy. The Power BI dashboards showed predicted versus actual sales, helping managers plan stock effectively. High-demand days and potential stockouts were highlighted, turning an unpredictable process into a clear, actionable system.</p>
+    <button type="button" class="collapsible">Approach</button>
+    <div class="content-collapsible">
+        <ul>
+            <li>Data Collection and Cleaning – Collected daily sales data, depot IDs, city, and historical stock data; cleaned for missing values and outliers.</li>
+            <li>Feature Engineering – Derived fields like previous day sales, moving averages, and day-of-week flags.</li>
+            <li>Model Selection and Forecasting – Implemented ARIMA and Holt-Winters; experimented with exponential smoothing for cross-validation.</li>
+            <li>Validation and Accuracy Checks – Metrics like RMSE and MAPE were used.</li>
+            <li>Visualisation and Reporting – Power BI dashboards and Excel reporting.</li>
+            <li>Iterative Refinement – Feedback from depot managers and actual sales outcomes incorporated.</li>
+        </ul>
+    </div>
 
-    <h2><b>How it Helped the Business</b></h2>
-    <p>The system gave managers clear visibility into daily depot-level demand, so they could stock the right amount of newspapers each day. It reduced stockouts on high-demand days and minimized excess on low-demand days. Overall, it made inventory planning more efficient, proactive, and data-driven.</p>
+    <button type="button" class="collapsible">Output</button>
+    <div class="content-collapsible">
+        <p>The models predicted daily sales at each depot with around 88–90% accuracy. The Power BI dashboards showed predicted versus actual sales, helping managers plan stock effectively. High-demand days and potential stockouts were highlighted, turning an unpredictable process into a clear, actionable system.</p>
+    </div>
 
-     <h2>Project Link</h2>
+   <button type="button" class="collapsible">Business Impact</button>
+<div class="content-collapsible">
     <p>
-      GitHub: <a href="https://github.com/VVa154/Sales-Prediction-Times-Of-India-Newspaper-at-Depot-Level" target="_blank">Sales-Prediction</a>
+        The system gave managers clear visibility into daily depot-level demand, so they could stock the right amount of newspapers each day. It reduced stockouts on high-demand days and minimized excess on low-demand days. Overall, it made inventory planning more efficient, proactive, and data-driven. Enabled data-driven sales planning for <b>The Times of India</b> newspaper at key depots in Mumbai, improving forecast accuracy to <b>over 85%</b> and streamlining distribution operations across <b>10+</b> major depots.
     </p>
+</div>
+
+
+    <button type="button" class="collapsible">Project Link</button>
+    <div class="content-collapsible">
+        <p>
+          GitHub: <a href="https://github.com/VVa154/Sales-Prediction-Times-Of-India-Newspaper-at-Depot-Level" target="_blank">Sales-Prediction</a>
+        </p>
+    </div>
+
     <a href="../../../projects.html" class="back-link"> ← Back to Projects </a>
 
 </section>
 
-</div> <!-- END WRAPPER -->
+</div>
 
 <footer class="footer">
     <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
@@ -195,6 +269,20 @@ const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
+});
+
+// Collapsible sections
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
 });
 </script>
 
