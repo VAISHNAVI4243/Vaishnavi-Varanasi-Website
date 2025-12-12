@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills - Vaishnavi Varanasi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Skills section layout */
+    .skills-section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .skill-card {
+      background-color: #fdf8f4;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .skill-card h3 {
+      color: #5a3e2b;
+      margin-bottom: 12px;
+    }
+
+    .skill-card ul {
+      padding-left: 20px;
+      color: #333;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .skill-card ul li {
+      margin-bottom: 6px;
+    }
+
+   
+
+    @media (max-width: 768px) {
+      .skills-section {
+        margin: 30px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR with Hamburger -->
+  <nav class="navbar">
+    <div class="logo">Vaishnavi Varanasi</div>
+
+    <!-- Hamburger button -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+        <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Milestones</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+
+    <!-- Social links (desktop only) -->
+    <div class="social-links">
+      <a href="https://github.com/VVa154" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/vaishnavi-varanasi-838104129/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </nav>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="skill-card">
+      <h3>Programming & Tools</h3>
+      <ul>
+        <li>Python (Pandas, Numpy, scikit-learn, PySpark, TensorFlow, matplotlib, Flask, Beautiful Soup)</li>
+        <li>SQL</li>
+        <li>R Programming</li>
+        <li>Excel</li>
+        <li>Power BI</li>
+        <li>Tableau</li>
+        <li>Microsoft Office Suite</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Cloud & Databases</h3>
+      <ul>
+        <li>Google Cloud Platform (BigQuery, Vertex AI)</li>
+        <li>Vector Databases (Pinecone, Chroma)</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Generative AI & LLM Ecosystem</h3>
+      <ul>
+        <li>LangChain</li>
+        <li>LlamaIndex</li>
+        <li>RAG Pipelines</li>
+        <li>Prompt Engineering</li>
+        <li>Ollama</li>
+        <li>Google Gemini</li>
+        <li>OpenAI GPT Models</li>
+        <li>Hugging Face Transformers</li>
+        <li>Semantic Kernel</li>
+      </ul>
+    </div>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Vaishnavi Varanasi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
